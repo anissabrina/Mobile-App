@@ -6,6 +6,8 @@ export default function App() {
     <View style={styles.container}>
       <Text style={{ fontsize:20 }}> Test :3 </Text>
       <Text>Another version by Sarah!</Text>
+      <Text style={{ color: '#1e90ff', fontSize: 25}}>
+        Anis is adding new line </Text>
       <StatusBar style="auto" />
     </View>
   );
