@@ -1,0 +1,24 @@
+{
+    "response": [
+        {
+            "id": 1,
+            "venue": "Conference Room",
+            "image":
+              "https://engine.iium.edu.my/leads/wp-content/uploads/2021/08/Mini-Conference-Room-768x576.png",
+            "capacity": "16 pax"
+          },
+          {
+            "id": 2,
+            "title": "Main Auditorium",
+            "image":"https://engine.iium.edu.my/leads/wp-content/uploads/2021/08/Mini-Conference-Room-768x576.png",
+            "capacity": "300 pax"
+          },
+          {
+            "id": 3,
+            "title": "Lecture Theatre",
+            "image":"https://engine.iium.edu.my/leads/wp-content/uploads/2021/08/Lecture-Theatre-2-1-768x576.png",
+            "capacity": "150 pax"
+          }
+
+    ]
+}
