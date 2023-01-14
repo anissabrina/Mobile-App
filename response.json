@@ -2,7 +2,7 @@
     "response": [
         {
             "id": 1,
-            "venue": "Conference Room",
+            "title": "Conference Room",
             "image":
               "https://engine.iium.edu.my/leads/wp-content/uploads/2021/08/Mini-Conference-Room-768x576.png",
             "capacity": "16 pax"
