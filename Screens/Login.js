@@ -4,6 +4,7 @@ import '../assets/images/Logo1.png';
 import { authentication } from "../Firebase/firebase-config";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import FormError from "../Components/FormError";
+import FormSuccess from "../Components/FormSuccess";
 
 
 const Login = ({navigation})=> {
@@ -18,37 +19,33 @@ const Login = ({navigation})=> {
     const[password, setPassword] = useState('');
     const[displayFormError, setDisplayFormError]= useState(false);
     const [errorMessage,setErrorMessage]=useState('');
+    const [successMessage, setSuccessMessage] = useState('');
+    const [isLoading, setIsLoading] = useState('');
     
     const ValidateInput =()=>{
         var form_input =[email,password];        
         if(form_input.includes('') || form_input.includes(undefined)){
             setErrorMessage('Please fill in all the fields');
             return setDisplayFormError(true);
-        } 
+        } else {
+            SignInUser();
+        }
     }
    
     const SignInUser = () =>{
+        setIsLoading(true);
         signInWithEmailAndPassword(authentication, email, password)
         .then((re)=>{
-            setIsSignIn(true);
+            setSuccessMessage("Loggin you in");
+            setIsLoading(false);
         })
-        .catch((err)=>{
-            console.log(re);
+        .catch((re)=>{
+            setErrorMessage("auth/wrong-password");
+            setDisplayFormError(true);
+            setIsLoading(false);
         })
     }
 
-
-    const SignOutUser=()=>{
-        signOut(authentication)
-        .then((re)=>{
-            setIsSignIn(false);
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
-    
-
-    }
 
 
 
@@ -67,19 +64,16 @@ const Login = ({navigation})=> {
                 <TextInput placeholder={"Email"} value={email} onChangeText={text =>setEmail(text)} 
                     style={styles.TextInput}
                     placeholderTextColor={'white'}/>
+                
                 <TextInput placeholder={"Password"} value={password} onChangeText={text =>setPassword(text)}
                     style={styles.TextInput}
                     secureTextEntry={true}
                     placeholderTextColor={'white'}/>
-                {isSignIn === true?
-                    <TouchableOpacity style={styles.Button} onPress={SignOutUser}>
-                    <Text style={styles.ButtonText}>Sign Out</Text>
-                    </TouchableOpacity>
-                    :
-                    <TouchableOpacity style={styles.Button} onPress={SignInUser}>
+                
+                <TouchableOpacity style={styles.Button} onPress={ValidateInput}>
                     <Text style={styles.ButtonText}>Sign In</Text>
-                    </TouchableOpacity>                             
-                }
+                </TouchableOpacity>  
+                
 
             </View>
             
@@ -94,6 +88,17 @@ const Login = ({navigation})=> {
                 :
                 null
         }
+
+        {
+            isLoading== true?
+            <FormSuccess/>
+            :
+            successMessage == "Loggin you in" ?
+            <FormSuccess successMessage={successMessage} close={setSuccessMessage} />
+            :
+            null
+        }
+
     </View>
     )
 }
