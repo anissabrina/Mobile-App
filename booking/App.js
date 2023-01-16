@@ -56,7 +56,7 @@ const App = () => {
     
 
       <View style={styles.container}>
-        <Text style={{fontWeight:'bold', fontSize: 20}}> {text} </Text>
+        
         <View style= {{paddingVertical:20}}></View>
 
           <Text style={{fontSize:25}}>Date of Event : </Text>
