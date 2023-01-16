@@ -19,11 +19,11 @@ const App = () => {
   const [date, setDate] = useState(new Date());
   const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);
-  const [text, setText] = useState('empty');
+  const [text, setText] = useState('Empty');
 
-  const onChange = (event,selectedDate) => {
+  const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
-    setShow(Platform.OS ==='ios');
+    setShow(Platform.OS === 'ios');
     setDate(currentDate);
 
     let tempDate = new Date(currentDate);
@@ -34,7 +34,7 @@ const App = () => {
     console.log(fDate + ' (' + fTime + ')')
   }
 
-  const showMode = (curentMode)=>{
+  const showMode = (currentMode)=>{
     setShow(true);
     setMode(currentMode);
 
@@ -44,7 +44,7 @@ const App = () => {
   return(
     <View style={{paddingHorizontal:15,marginTop:100}}>
 
-      <Text style={{fontSize:20,color:'blue'}}> Venue : </Text>
+      <Text style={{fontSize:25}}> Venue : </Text>
       <SelectList 
         setSelected={setSelected} 
         data={data} 
@@ -59,15 +59,17 @@ const App = () => {
         <Text style={{fontWeight:'bold', fontSize: 20}}> {text} </Text>
         <View style= {{paddingVertical:20}}></View>
 
-          <Text>Date of Event : </Text>
-          <View style= {{paddingVertical:15}}>
+          <Text style={{fontSize:25}}>Date of Event : </Text>
+          <View style= {{marginTop:10, paddingVertical:10, backgroundColor:'#eab676', borderRadius: 6}}>
+          
             <Button title = 'Date' onPress={() => showMode ('date')} />
+          
           </View>
 
         <View style={{paddingVertical:20}} ></View>
           
-          <Text>Time of Event : </Text>
-          <View style= {{paddingVertical:15}}>
+          <Text style={{fontSize:25}}>Time of Event : </Text>
+          <View style= {{marginTop:10, paddingVertical:10, backgroundColor:'#eab676', borderRadius: 6}}>
             <Button title = 'Time' onPress={() => showMode ('time')} />
           </View>
       
@@ -86,10 +88,10 @@ const App = () => {
     </View> 
 
     <View style={{marginTop:50}}>
-        <Text>Selected Venue : </Text>
-        <Text style={{marginTop:10,color:'gray'}}>{selected}</Text>
-        <Text>Selected Time and Date : </Text>
-        <Text style={{marginTop:10,color:'gray'}}>{text}</Text>
+        <Text style={{fontSize:25}}>Selected Venue : </Text>
+        <Text style={{marginTop:10,fontSize:20, color:'#2596be'}}>{selected}</Text>
+        <Text style={{marginTop:20, fontSize:25}}>Selected Time and Date : </Text>
+        <Text style={{marginTop:10,fontSize:20, color:'#2596be'}}>{text}</Text>
     </View>
   </View>
 
@@ -101,7 +103,7 @@ const styles = StyleSheet.create({
   container: {
     marginTop:20,
     
-    backgroundColor: '#fff',
+    backgroundColor: '#gray',
   },
 });
 
