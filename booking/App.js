@@ -90,7 +90,7 @@ const App = () => {
     <View style={{marginTop:50}}>
         <Text style={{fontSize:25}}>Selected Venue : </Text>
         <Text style={{marginTop:10,fontSize:20, color:'#2596be'}}>{selected}</Text>
-        <Text style={{marginTop:20, fontSize:25}}>Selected Time and Date : </Text>
+        <Text style={{marginTop:20, fontSize:25}}>Selected Date and Time : </Text>
         <Text style={{marginTop:10,fontSize:20, color:'#2596be'}}>{text}</Text>
     </View>
   </View>
