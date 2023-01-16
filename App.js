@@ -1,6 +1,8 @@
-import React from 'react';
-import {View,Text} from 'react-native';
+import React, { useState } from 'react';
+import {StyleSheet, Text, View, Button, Platform} from 'react-native';
 import {SelectList }from 'react-native-dropdown-select-list'
+import DateTimePicker from '@react-native-community/datetimepicker';
+import { StatusBar } from 'expo-status-bar';
 
 const App = () => {
 
@@ -14,6 +16,30 @@ const App = () => {
     {key:'Wadi Budi', value:'Wadi Budi'},
   ]
 
+  const [date, setDate] = useState(new Date());
+  const [mode, setMode] = useState('date');
+  const [show, setShow] = useState(false);
+  const [text, setText] = useState('empty');
+
+  const onChange = (event,selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShow(Platform.OS ==='ios');
+    setDate(currentDate);
+
+    let tempDate = new Date(currentDate);
+    let fDate = tempDate.getDate() +'/' + (tempDate.getMonth()+1) + '/' + tempDate.getFullYear();
+    let fTime = 'Hours' + tempDate.getHours() + ' | Minutes:' + tempDate.getMinutes();
+    setText(fDate + '\n' + fTime)
+
+    console.log(fDate + ' (' + fTime + ')')
+  }
+
+  const showMode = (curentMode)=>{
+    setShow(true);
+    setMode(currentMode);
+
+  }
+
 
   return(
     <View style={{paddingHorizontal:15,marginTop:15}}>
@@ -25,18 +51,49 @@ const App = () => {
         save="value"
         label="Categories"
         boxStyles={{marginTop:25}}
-    />
-
-
-
+        />
       <View style={{marginTop:50}}>
         <Text>Selected Value : </Text>
         <Text style={{marginTop:10,color:'gray'}}>{selected}</Text>
       </View>
-    </View>
     
+
+      <View style={styles.container}>
+        <Text style={{fontWeight:'bold', fontSize: 20}}> {text} </Text>
+        <View style={{margin: 20}} >
+          <Button title = 'DatePicker' onPress={() => showMode ('date')} />
+        </View>
+        <View style={{margin: 20}} >
+          <Button title = 'TimePicker' onPress={() => showMode ('time')} />
+        </View>
+      
+      {show && (
+        <DateTimePicker
+        testID='dateTimePicker'
+        value = {date}
+        mode={mode}
+        is24Hour={true}
+        display='default'
+        onChange={onChange}
+        />
+      )}
+
+      <StatusBar style="auto" />
+    </View> 
+  </View>
+
   )
 
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+
 
 export default App;
