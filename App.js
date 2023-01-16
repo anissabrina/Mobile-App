@@ -42,9 +42,9 @@ const App = () => {
 
 
   return(
-    <View style={{paddingHorizontal:15,marginTop:15}}>
+    <View style={{paddingHorizontal:15,marginTop:100}}>
 
-      <Text style={{color:'blue'}}> Venue : </Text>
+      <Text style={{fontSize:20,color:'blue'}}> Venue : </Text>
       <SelectList 
         setSelected={(val) => setCategories(val)} 
         data={data} 
@@ -53,7 +53,7 @@ const App = () => {
         boxStyles={{marginTop:25}}
         />
       <View style={{marginTop:50}}>
-        <Text>Selected Value : </Text>
+        <Text>Selected Venue : </Text>
         <Text style={{marginTop:10,color:'gray'}}>{selected}</Text>
       </View>
     
@@ -61,10 +61,13 @@ const App = () => {
       <View style={styles.container}>
         <Text style={{fontWeight:'bold', fontSize: 20}}> {text} </Text>
         <View style={{margin: 20}} >
-          <Button title = 'DatePicker' onPress={() => showMode ('date')} />
+          <Text>Date of Event : </Text>
+          <Button title = 'Date' onPress={() => showMode ('date')} />
+          
         </View>
         <View style={{margin: 20}} >
-          <Button title = 'TimePicker' onPress={() => showMode ('time')} />
+          <Text>Time of Event : </Text>
+          <Button title = 'Time' onPress={() => showMode ('time')} />
         </View>
       
       {show && (
