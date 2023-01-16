@@ -60,7 +60,7 @@ const App = () => {
         <View style= {{paddingVertical:20}}></View>
 
           <Text style={{fontSize:25}}>Date of Event : </Text>
-          <View style= {{marginTop:10, paddingVertical:10, backgroundColor:'#eab676', borderRadius: 6}}>
+          <View style= {{marginTop:10, paddingVertical:10, backgroundColor:'#eeeee4', borderRadius: 6}}>
           
             <Button title = 'Date' onPress={() => showMode ('date')} />
           
@@ -69,7 +69,7 @@ const App = () => {
         <View style={{paddingVertical:20}} ></View>
           
           <Text style={{fontSize:25}}>Time of Event : </Text>
-          <View style= {{marginTop:10, paddingVertical:10, backgroundColor:'#eab676', borderRadius: 6}}>
+          <View style= {{marginTop:10, paddingVertical:10, backgroundColor:'#eeeee4', borderRadius: 6}}>
             <Button title = 'Time' onPress={() => showMode ('time')} />
           </View>
       
