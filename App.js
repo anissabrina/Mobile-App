@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import {StyleSheet, Text, View, Button, Platform} from 'react-native';
 import {SelectList }from 'react-native-dropdown-select-list'
@@ -100,3 +101,31 @@ const styles = StyleSheet.create({
 
 
 export default App;
+=======
+import 'react-native-gesture-handler';
+import React, {useState} from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Login from './Screens/Login';
+import Signup from './Screens/Signup';
+
+
+const App = () => {
+
+  const [signIn,isSignedIn]=useState(true);
+  const Stack = createNativeStackNavigator();
+
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={Login} options={{headerShown:false}}/>
+        <Stack.Screen name="Signup" component={Signup} options={{headerShown:false}}   />
+      </Stack.Navigator>
+    </NavigationContainer>
+
+  );
+};
+
+
+export default App;
+>>>>>>> origin
