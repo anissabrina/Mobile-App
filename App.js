@@ -1,21 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import React, {useState} from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Login from './Screens/Login';
+import Signup from './Screens/Signup';
 
-export default function App() {
+
+const App = () => {
+
+  const [signIn,isSignedIn]=useState(true);
+  const Stack = createNativeStackNavigator();
+
   return (
-    <View style={styles.container}>
-      <Text style={{ fontsize:20 }}> Test :3 </Text>
-      <Text>Another version by Sarah!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={Login} options={{headerShown:false}}/>
+        <Stack.Screen name="Signup" component={Signup} options={{headerShown:false}}   />
+      </Stack.Navigator>
+    </NavigationContainer>
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff0f5',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  );
+};
+
+
+export default App;
