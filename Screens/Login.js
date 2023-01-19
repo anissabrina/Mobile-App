@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Text, View,StyleSheet, TouchableOpacity, Image, TextInput } from "react-native";
+import { Text, View,StyleSheet, TouchableOpacity, Image, TextInput,ScrollView } from "react-native";
 import '../assets/images/Logo1.png';
 import { authentication } from "../Firebase/firebase-config";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
@@ -13,8 +13,12 @@ const Login = ({navigation})=> {
         navigation.navigate('Signup')
     
     }
+
+    function navigateHome(){
+        navigation.navigate('Home')
     
-    const[isSignIn, setIsSignIn] = useState(false);
+    }
+    
     const[email, setEmail] = useState('');
     const[password, setPassword] = useState('');
     const[displayFormError, setDisplayFormError]= useState(false);
@@ -38,6 +42,8 @@ const Login = ({navigation})=> {
         .then((re)=>{
             setSuccessMessage("Loggin you in");
             setIsLoading(false);
+            navigateHome();
+
         })
         .catch((re)=>{
             setErrorMessage("auth/wrong-password");
@@ -56,7 +62,7 @@ const Login = ({navigation})=> {
                 style={styles.ImageStyle}
                 source={require('../assets/images/Logo1.png')} />
         </View>
-        <View style={styles.BottomView}>
+        <ScrollView style={styles.BottomView}>
             <Text style={styles.Heading}>
                 Welcome
             </Text>
@@ -81,7 +87,7 @@ const Login = ({navigation})=> {
                 <Text style={styles.SignUpText}>Sign Up</Text>
             </TouchableOpacity>
 
-        </View>
+        </ScrollView>
 
         {displayFormError == true?
                 <FormError hideErrorOverlay={setDisplayFormError} err={errorMessage} />
